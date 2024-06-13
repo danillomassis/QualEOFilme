@@ -22,6 +22,7 @@ public class Main {
     boolean acertou = false;
     int pontuacao = 0;
     int tentativas = 0;
+    int[] pontuacoes = {100, 60, 40, 20, 10};
 
         for (tentativas = 0; tentativas < 5; tentativas++) {
             mostrarPistas(pistas, tentativas + 1);
@@ -30,27 +31,13 @@ public class Main {
 
             if (comparaFilme(nomeFilme, resposta)) {
                 acertou = true;
-                switch (tentativas) {
-                    case 0:
-                        pontuacao = 100;
-                        break;
-                    case 1:
-                        pontuacao = 60;
-                        break;
-                    case 2:
-                        pontuacao = 40;
-                        break;
-                    case 3:
-                        pontuacao = 20;
-                        break;
-                    case 4:
-                        pontuacao = 10;
-                        break;
-                }
+                pontuacao = pontuacoes[tentativas];
                 System.out.println("Você Acertou. Parabéns!");
                 break;
-            }else {
-                System.out.println("Você errou! Tente novamente.");
+            } else {
+                if(tentativas < 4 ) {
+                    System.out.println("Você errou! Tente novamente.");
+                }
             }
         }
 
